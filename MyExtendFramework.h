@@ -24,5 +24,6 @@
 #import "UINavigationItem+changeBackButtonTitle.h"
 #import "UIView+easyAnimation.h"
 #import "UIView+resizeViewWhenNavigationBarStyleIsTranslucent.h"
+#import "UINavigationBar+setBackgroundImageNamed.h"
 
 #endif
