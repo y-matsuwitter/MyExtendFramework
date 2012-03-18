@@ -25,5 +25,6 @@
 #import "UIView+easyAnimation.h"
 #import "UIView+resizeViewWhenNavigationBarStyleIsTranslucent.h"
 #import "UINavigationBar+setBackgroundImageNamed.h"
+#import "UINavigationBar+JTDropShadow.h"
 
 #endif
