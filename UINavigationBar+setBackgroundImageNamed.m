@@ -29,4 +29,9 @@
     }
 }
 
+- (void)setNavigationBarTitleView:(UIView*)targetView
+{
+    [[self.items objectAtIndex:0] setTitleView:targetView];
+}
+
 @end

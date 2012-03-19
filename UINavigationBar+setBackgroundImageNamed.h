@@ -8,4 +8,5 @@
 
 @interface UINavigationBar (setBackgroundImageNamed)
 - (void)setBackgroundImageNamedUniversal:(NSString*)imageName;
+- (void)setNavigationBarTitleView:(UIView*)targetView;
 @end
