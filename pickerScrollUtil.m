@@ -18,6 +18,7 @@
 @synthesize offset = _offset;
 
 @synthesize isTouchMoveScroll = _isTouchMoveScroll;
+@synthesize isPickerShown = _isPickerShown;
 @synthesize isUpScroll = _isUpScroll;
 @synthesize beforeSCViewContentOffsetY = _beforeSCViewContentOffsetY;
 
@@ -89,6 +90,7 @@
                          self.scrollView.contentInset = insets;
                          self.scrollView.scrollIndicatorInsets = insets;
                      } completion:^(BOOL finished){
+                         self.isPickerShown = YES;
                          if (callback) {
                              if ([self.sendCallbackTarget respondsToSelector:self.callbackSelector]) {
                                  [self.sendCallbackTarget performSelector:self.callbackSelector];
@@ -112,6 +114,7 @@
                          self.scrollView.scrollIndicatorInsets = insets;
                      } completion:^(BOOL finished){
                          if (callback) {
+                             self.isPickerShown = NO;
                              if ([self.sendCallbackTarget respondsToSelector:self.callbackSelector]) {
                                  [self.sendCallbackTarget performSelector:self.callbackSelector];
                              }

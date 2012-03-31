@@ -12,6 +12,7 @@
 @property (nonatomic, retain) UIScrollView* scrollView;
 @property (nonatomic, readwrite) NSInteger offset;
 @property (nonatomic, readwrite) BOOL isTouchMoveScroll;
+@property (nonatomic, readwrite) BOOL isPickerShown;
 
 @property (nonatomic, assign) id sendCallbackTarget;
 @property (nonatomic) SEL callbackSelector;
