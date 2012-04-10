@@ -44,4 +44,7 @@
 
 #define _null [NSNull null]
 
+#define NSStringFromInt(target) [NSString stringWithFormat:@"%d", target]
+#define NSStringFromFloat(target) [NSString stringWithFormat:@"%f", target]
+
 #endif
