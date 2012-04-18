@@ -13,17 +13,18 @@
 
 + (NSInteger)nowJpYearInteger
 {
-    NSLocale* jpLocale = [[[NSLocale alloc] initWithLocaleIdentifier:jpLocaleStr] autorelease];
-    NSTimeZone* jpTimeZone = [NSTimeZone timeZoneWithName:jpTimeZoneStr];
+    NSLocale* jpLocale             = [[[NSLocale alloc] initWithLocaleIdentifier:jpLocaleStr] autorelease];
+    NSTimeZone* jpTimeZone         = [NSTimeZone timeZoneWithName:jpTimeZoneStr];
     NSDateFormatter* dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
     [dateFormatter setDateFormat:@"yyyy"];
     [dateFormatter setLocale:jpLocale];
     [dateFormatter setTimeZone:jpTimeZone];
     
-    NSDate* nowDate = [NSDate date];
+    NSDate* nowDate  = [NSDate date];
     NSString* result = [dateFormatter stringFromDate:nowDate];
     
     NSInteger year = [result integerValue];
+    
     dateFormatter = nil, jpLocale = nil, jpTimeZone = nil;
     
     return year;
@@ -31,13 +32,13 @@
 
  + (NSInteger)nowJpWeekdayInteger
 {
-    NSLocale*   jpLocale = [[[NSLocale alloc] initWithLocaleIdentifier:jpLocaleStr] autorelease];
+    NSLocale*   jpLocale   = [[[NSLocale alloc] initWithLocaleIdentifier:jpLocaleStr] autorelease];
     NSTimeZone* jpTimeZone = [NSTimeZone timeZoneWithName:jpTimeZoneStr];
-    NSCalendar* calendar = [[[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar] autorelease];
+    NSCalendar* calendar   = [[[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar] autorelease];
     [calendar setLocale:jpLocale];
     [calendar setTimeZone:jpTimeZone];
     
-    NSDate* nowDate = [NSDate date];
+    NSDate* nowDate     = [NSDate date];
     NSInteger unitFlags = NSWeekdayCalendarUnit;
     NSDateComponents* weekDayComponents = [calendar components:unitFlags fromDate:nowDate];
     

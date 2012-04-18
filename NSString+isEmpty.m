@@ -12,7 +12,7 @@
 
 - (BOOL)isEmpty
 {
-    return (self == nil || [self isEqualToString:@""])?YES:NO;
+    return [self isEqualToString:@""];
 }
 
 - (BOOL)isMatchRegExp:(NSString *)regExpStr
@@ -24,6 +24,7 @@
                                                          error:&error];
     if (error) {
         MyLog(@"NSRegularExpression error");
+        ShowObject(error);
         return NO;
     } else {
         NSTextCheckingResult* match;

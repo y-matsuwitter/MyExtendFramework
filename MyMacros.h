@@ -38,6 +38,8 @@
 #endif
 
 #define Destroy(target) [target release], target = nil
+#define SAFE_RELEASE(target) [target release], target = nil
+#define SAFE_AUTORELEASE(target) [target autorelease], target = nil
 #define DestroyWithLog(target) [target release], target = nil, MyLog(@"%s Destroyed", #target)
 
 #define allocInitWithNibName(target) [[target alloc] initWithNibName:[NSString stringWithFormat:@"%s",#target] bundle:nil]

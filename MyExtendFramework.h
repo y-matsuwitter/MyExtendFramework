@@ -15,6 +15,7 @@
 #import "KeyboardShowHideNotificationUtil.h"
 #import "easyDate.h"
 #import "pickerScrollUtil.h"
+#import "tabBarShowHideAnimationUtil.h"
 
 // Objective-C Category
 #import "NSDictionary+hasKey.h"

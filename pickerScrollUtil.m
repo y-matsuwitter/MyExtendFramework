@@ -15,15 +15,15 @@
 
 @synthesize pickerView = _pickerView;
 @synthesize scrollView = _scrollView;
-@synthesize offset = _offset;
+@synthesize offset     = _offset;
 
 @synthesize isTouchMoveScroll = _isTouchMoveScroll;
-@synthesize isPickerShown = _isPickerShown;
-@synthesize isUpScroll = _isUpScroll;
+@synthesize isPickerShown     = _isPickerShown;
+@synthesize isUpScroll        = _isUpScroll;
 @synthesize beforeSCViewContentOffsetY = _beforeSCViewContentOffsetY;
 
 @synthesize sendCallbackTarget = _sendCallbackTarget;
-@synthesize callbackSelector = _callbackSelector;
+@synthesize callbackSelector   = _callbackSelector;
 
 - (void)dealloc
 {
@@ -46,7 +46,7 @@
 - (void)setSendCallbackTarget:(id)target andSelector:(SEL)selector;
 {
     self.sendCallbackTarget = target;
-    self.callbackSelector = selector;
+    self.callbackSelector   = selector;
 }
 
 #pragma mark - picker animation
@@ -54,7 +54,7 @@
 - (void)movePickerViewWithScroll:(NSInteger)moveOffset
 {
     CGRect pickerViewRect = self.pickerView.frame;
-    CGRect superViewRect = self.pickerView.superview.frame;
+    CGRect superViewRect  = self.pickerView.superview.frame;
     
     pickerViewRect.origin.y -= moveOffset;
     self.isUpScroll = (moveOffset > 0)?YES:NO;
