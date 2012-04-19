@@ -12,4 +12,7 @@
 + (NSInteger)nowJpWeekdayInteger;
 + (NSInteger)nowJpWeekdayIntegerForSugojika;
 
++ (NSString*)easyDateFormatterForJp:(NSString*)dateFormat date:(NSDate*)date;
++ (NSDate*)easyDateFormatterForJp:(NSString*)dateFormat dateString:(NSString*)dateString;
+
 @end

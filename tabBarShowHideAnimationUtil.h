@@ -18,4 +18,12 @@ typedef void (^tabBarShowHideAnimationCompletionBlock)(void);
                           tabBarController:(UITabBarController*)tabBarController
                                 completion:(tabBarShowHideAnimationCompletionBlock)completion;
 
+- (void)showTabBarUsingAnimationWithView:(UIView*)view
+                        tabBarController:(UITabBarController*)tabBarController
+                              completion:(tabBarShowHideAnimationCompletionBlock)completion;
+
+- (void)hideTabBarUsingAnimationWithView:(UIView*)view
+                        tabBarController:(UITabBarController*)tabBarController
+                              completion:(tabBarShowHideAnimationCompletionBlock)completion;
+
 @end

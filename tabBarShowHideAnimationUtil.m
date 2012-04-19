@@ -66,4 +66,29 @@
                      }];
 }
 
+- (void)showTabBarUsingAnimationWithView:(UIView*)view
+                        tabBarController:(UITabBarController*)tabBarController
+                              completion:(tabBarShowHideAnimationCompletionBlock)completion
+{
+    BOOL isTabBatHidden = (tabBarController.tabBar.frame.origin.y >= [UIScreen mainScreen].bounds.size.height)?YES:NO;
+    
+    if (isTabBatHidden)
+        [self toggleTabBarUsingAnimationWithView:view
+                                tabBarController:tabBarController
+                                      completion:completion];
+}
+
+- (void)hideTabBarUsingAnimationWithView:(UIView*)view
+                        tabBarController:(UITabBarController*)tabBarController
+                              completion:(tabBarShowHideAnimationCompletionBlock)completion
+{
+    BOOL isTabBatHidden = (tabBarController.tabBar.frame.origin.y >= [UIScreen mainScreen].bounds.size.height)?YES:NO;
+    
+    if (!isTabBatHidden)
+        [self toggleTabBarUsingAnimationWithView:view
+                                tabBarController:tabBarController
+                                      completion:completion];
+    
+}
+
 @end
