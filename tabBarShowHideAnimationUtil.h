@@ -6,13 +6,16 @@
 
 #import <Foundation/Foundation.h>
 
+typedef void (^tabBarShowHideAnimationCompletionBlock)(void);
+
 @interface tabBarShowHideAnimationUtil : NSObject
 
 @property (nonatomic, readwrite) NSTimeInterval duration;
 
-- (id)initWithDuration:(NSTimeInterval)duration;
++ (tabBarShowHideAnimationUtil*)useWithDuration:(NSTimeInterval)duration;
 
-- (void)toggleTabBarUsingAnimationWithView:(UIView*)view tabBar:(UITabBar*)tabBar;
-- (void)toggleTabBarUsingAnimationWithView:(UIView*)view tabBarController:(UITabBarController*)tabBarController;
+- (void)toggleTabBarUsingAnimationWithView:(UIView*)view
+                          tabBarController:(UITabBarController*)tabBarController
+                                completion:(tabBarShowHideAnimationCompletionBlock)completion;
 
 @end

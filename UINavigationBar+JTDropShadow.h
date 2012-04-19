@@ -11,7 +11,7 @@
 
 - (void)dropShadowWithOffset:(CGSize)offset
                       radius:(CGFloat)radius
-                       color:(UIColor *)color
+                       color:(UIColor*)color
                      opacity:(CGFloat)opacity;
 
 @end
