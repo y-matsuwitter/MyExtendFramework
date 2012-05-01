@@ -28,5 +28,7 @@
 #import "UIView+resizeViewWhenNavigationBarStyleIsTranslucent.h"
 #import "UINavigationBar+setBackgroundImageNamed.h"
 #import "UINavigationBar+JTDropShadow.h"
+#import "UIView+removeAllSubviews.h"
+#import "UIView+resetViewPositionToZeroZero.h"
 
 #endif
