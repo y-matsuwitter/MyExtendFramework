@@ -30,5 +30,6 @@
 #import "UINavigationBar+JTDropShadow.h"
 #import "UIView+removeAllSubviews.h"
 #import "UIView+resetViewPositionToZeroZero.h"
+#import "UIView+frameUtil.h"
 
 #endif
