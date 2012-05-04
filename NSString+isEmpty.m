@@ -33,7 +33,7 @@
     }
 }
 
-- (NSString *)md5String
+- (NSString*)md5String
 {
     const char *cStr = [self UTF8String];
     unsigned char result[16];
