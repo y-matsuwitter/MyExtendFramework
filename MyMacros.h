@@ -21,6 +21,7 @@
     #define ShowCGRect(target) MyLog(@"%s => %@",#target , NSStringFromCGRect(target))
     #define ShowUIViewBounds(target) ShowCGRect(target.bounds)
     #define ShowUIViewFrame(target) ShowCGRect(target.frame)
+    #define ShowViewDetail(target) ShowObject([target performSelector:@selector(recursiveDescription)])
 #else
     #define MyLog(format, ...) ;
     #define Reach ;
@@ -35,6 +36,7 @@
     #define ShowSGRect(target) ;
     #define ShowUIViewBounds(target) ;
     #define ShowUIViewFrame(target) ;
+    #define ShowViewDetail(target) ;
 #endif
 
 #define Destroy(target) [target release], target = nil
