@@ -8,30 +8,45 @@
 
 @implementation tabBarShowHideAnimationUtil
 
-@synthesize duration = _duration;
+@synthesize tabBarController = _tabBarController;
+@synthesize view             = _view;
+@synthesize duration         = _duration;
 
-- (id)initWithDuration:(NSTimeInterval)duration
++ (tabBarShowHideAnimationUtil*)useWithTabBarController:(UITabBarController*)tabBarController
+                                                   view:(UIView*)view
+                                               duration:(NSTimeInterval)duration
 {
-    self = [super init];
+    if (tabBarController == nil || view == nil)
+        return nil;
     
-    if (!self) return nil;
-    
-    self.duration = duration;
-    
-    return self;
-}
-
-+ (tabBarShowHideAnimationUtil*)useWithDuration:(NSTimeInterval)duration
-{
-    tabBarShowHideAnimationUtil* util = [[[tabBarShowHideAnimationUtil alloc] initWithDuration:duration] autorelease];
+    tabBarShowHideAnimationUtil* util = [[[tabBarShowHideAnimationUtil alloc] init] autorelease];
+    if (util) {
+        util.tabBarController = tabBarController;
+        util.view             = view;
+        util.duration         = duration;
+    }
     return util;
 }
 
-- (void)toggleTabBarUsingAnimationWithView:(UIView*)view
-                          tabBarController:(UITabBarController*)tabBarController
-                                completion:(tabBarShowHideAnimationCompletionBlock)completion
+#pragma mark - getter
+
+- (BOOL)isTabBarHidden
 {
-    BOOL isTabBatHidden = (tabBarController.tabBar.frame.origin.y >= [UIScreen mainScreen].bounds.size.height)?YES:NO;
+    BOOL isTabBarHidden = NO;
+    if (self.tabBarController != nil && self.view != nil)
+        isTabBarHidden = (self.tabBarController.tabBar.frame.origin.y >= [UIScreen mainScreen].bounds.size.height)?YES:NO;
+    return isTabBarHidden;
+}
+
+#pragma mark - main
+
+- (void)toggleTabBarUsingAnimationWithCompletion:(tabBarShowHideAnimationCompletionBlock)completion
+{
+    if (self.tabBarController == nil || self.view == nil)
+        return;
+    
+    UITabBarController* tabBarController = self.tabBarController;
+    UIView*             view             = self.view;
     
     UIView* transitionView = nil;
     for (UIView* inView in tabBarController.view.subviews) {
@@ -46,7 +61,7 @@
     
     CGFloat tabBarHeight = tabBarRect.size.height;
     
-    if (isTabBatHidden) {
+    if (self.isTabBarHidden) {
         viewRect.size.height           -= tabBarHeight;
         tabBarRect.origin.y            -= tabBarHeight;
         transitionViewRect.size.height -= tabBarHeight;
@@ -62,32 +77,21 @@
                          view.frame                    = viewRect;
                          transitionView.frame          = transitionViewRect;
                      } completion:^(BOOL finished) {
-                         completion();
+                         if (completion)
+                             completion();
                      }];
 }
 
-- (void)showTabBarUsingAnimationWithView:(UIView*)view
-                        tabBarController:(UITabBarController*)tabBarController
-                              completion:(tabBarShowHideAnimationCompletionBlock)completion
+- (void)showTabBarUsingAnimationWithCompletion:(tabBarShowHideAnimationCompletionBlock)completion
 {
-    BOOL isTabBatHidden = (tabBarController.tabBar.frame.origin.y >= [UIScreen mainScreen].bounds.size.height)?YES:NO;
-    
-    if (isTabBatHidden)
-        [self toggleTabBarUsingAnimationWithView:view
-                                tabBarController:tabBarController
-                                      completion:completion];
+    if (self.isTabBarHidden)
+        [self toggleTabBarUsingAnimationWithCompletion:completion];
 }
 
-- (void)hideTabBarUsingAnimationWithView:(UIView*)view
-                        tabBarController:(UITabBarController*)tabBarController
-                              completion:(tabBarShowHideAnimationCompletionBlock)completion
+- (void)hideTabBarUsingAnimationWithCompletion:(tabBarShowHideAnimationCompletionBlock)completion
 {
-    BOOL isTabBatHidden = (tabBarController.tabBar.frame.origin.y >= [UIScreen mainScreen].bounds.size.height)?YES:NO;
-    
-    if (!isTabBatHidden)
-        [self toggleTabBarUsingAnimationWithView:view
-                                tabBarController:tabBarController
-                                      completion:completion];
+    if (!self.isTabBarHidden)
+        [self toggleTabBarUsingAnimationWithCompletion:completion];
     
 }
 
