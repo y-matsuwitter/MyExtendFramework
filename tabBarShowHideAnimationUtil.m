@@ -34,7 +34,7 @@
 {
     BOOL isTabBarHidden = NO;
     if (self.tabBarController != nil && self.view != nil)
-        isTabBarHidden = (self.tabBarController.tabBar.frame.origin.y >= [UIScreen mainScreen].bounds.size.height)?YES:NO;
+        isTabBarHidden = (self.tabBarController.tabBar.frame.origin.y >= self.tabBarController.view.bounds.size.height)?YES:NO;
     return isTabBarHidden;
 }
 
