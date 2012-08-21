@@ -3,6 +3,10 @@
 //
 //  Created by Sugamiya Yusuke on 12/03/05.
 //
+//
+//  !!!!!!       Deprecated       !!!!!!
+//  !!!!!! This class is obsolete !!!!!!
+//
 
 #import <UIKit/UIKit.h>
 

@@ -3,49 +3,24 @@
 //
 //  Created by Sugamiya Yusuke on 12/03/05.
 //
+//
+//  !!!!!!       Deprecated       !!!!!!
+//  !!!!!! This class is obsolete !!!!!!
+//
 
 #import "easyDate.h"
-
-#define jpLocaleStr   @"ja_JP"
-#define jpTimeZoneStr @"JST"
+#import "NSDate+utilsForJpTimezone.h"
 
 @implementation easyDate
 
 + (NSInteger)nowJpYearInteger
 {
-    NSLocale* jpLocale             = [[[NSLocale alloc] initWithLocaleIdentifier:jpLocaleStr] autorelease];
-    NSTimeZone* jpTimeZone         = [NSTimeZone timeZoneWithName:jpTimeZoneStr];
-    NSDateFormatter* dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
-    [dateFormatter setDateFormat:@"yyyy"];
-    [dateFormatter setLocale:jpLocale];
-    [dateFormatter setTimeZone:jpTimeZone];
-    
-    NSDate* nowDate  = [NSDate date];
-    NSString* result = [dateFormatter stringFromDate:nowDate];
-    
-    NSInteger year = [result integerValue];
-    
-    dateFormatter = nil, jpLocale = nil, jpTimeZone = nil;
-    
-    return year;
+    return [NSDate nowYearInteger];
 }
 
- + (NSInteger)nowJpWeekdayInteger
++ (NSInteger)nowJpWeekdayInteger
 {
-    NSLocale*   jpLocale   = [[[NSLocale alloc] initWithLocaleIdentifier:jpLocaleStr] autorelease];
-    NSTimeZone* jpTimeZone = [NSTimeZone timeZoneWithName:jpTimeZoneStr];
-    NSCalendar* calendar   = [[[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar] autorelease];
-    [calendar setLocale:jpLocale];
-    [calendar setTimeZone:jpTimeZone];
-    
-    NSDate* nowDate     = [NSDate date];
-    NSInteger unitFlags = NSWeekdayCalendarUnit;
-    NSDateComponents* weekDayComponents = [calendar components:unitFlags fromDate:nowDate];
-    
-    NSInteger i = [weekDayComponents weekday];
-    jpLocale = nil, jpTimeZone = nil, nowDate = nil, weekDayComponents = nil;
-    
-    return i;
+    return [NSDate nowWeekdayInteger];
 }
 
 + (NSInteger)nowJpWeekdayIntegerForSugojika
@@ -57,39 +32,14 @@
 
 + (NSString*)easyDateFormatterForJp:(NSString*)dateFormat date:(NSDate*)date
 {
-    NSLocale* jpLocale             = [[[NSLocale alloc] initWithLocaleIdentifier:jpLocaleStr] autorelease];
-    NSTimeZone* jpTimeZone         = [NSTimeZone timeZoneWithName:jpTimeZoneStr];
-    NSDateFormatter* dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
-    [dateFormatter setDateFormat:dateFormat];
-    [dateFormatter setLocale:jpLocale];
-    [dateFormatter setTimeZone:jpTimeZone];
-    
     if (!date) date = [NSDate date];
-    NSString* result = [dateFormatter stringFromDate:date];
     
-    dateFormatter = nil, jpLocale = nil, jpTimeZone = nil;
-    
-    return result;
+    return [date stringFromDateFormat:dateFormat];
 }
 
 + (NSDate*)easyDateFormatterForJp:(NSString*)dateFormat dateString:(NSString*)dateString
 {
-    if (!dateFormat && !dateString)
-        return nil;
-    
-    NSLocale* jpLocale             = [[[NSLocale alloc] initWithLocaleIdentifier:jpLocaleStr] autorelease];
-    NSTimeZone* jpTimeZone         = [NSTimeZone timeZoneWithName:jpTimeZoneStr];
-    NSDateFormatter* dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
-    [dateFormatter setDateFormat:dateFormat];
-    [dateFormatter setLocale:jpLocale];
-    [dateFormatter setTimeZone:jpTimeZone];
-    
-    NSDate* result = [dateFormatter dateFromString:dateString];
-    
-    dateFormatter = nil, jpLocale = nil, jpTimeZone = nil;
-    
-    return result;
+    return [NSDate dateFromDateString:dateString dateFormat:dateFormat];
 }
-
 
 @end
