@@ -7,6 +7,7 @@
 //
 
 #import "urlStringHelper.h"
+#import "MyMacros.h"
 
 @implementation urlStringHelper
 

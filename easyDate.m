@@ -5,7 +5,7 @@
 //
 
 #import "easyDate.h"
-
+#import "MyMacros.h"
 #define jpLocaleStr   @"ja_JP"
 #define jpTimeZoneStr @"JST"
 

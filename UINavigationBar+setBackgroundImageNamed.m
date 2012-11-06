@@ -6,6 +6,7 @@
 
 #import "UINavigationBar+setBackgroundImageNamed.h"
 #import <QuartzCore/QuartzCore.h>
+#import "MyMacros.h"
 
 @implementation UINavigationBar (setBackgroundImageNamed)
 
