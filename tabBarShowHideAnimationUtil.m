@@ -23,7 +23,7 @@
 
 + (tabBarShowHideAnimationUtil*)useWithDuration:(NSTimeInterval)duration
 {
-    tabBarShowHideAnimationUtil* util = [[[tabBarShowHideAnimationUtil alloc] initWithDuration:duration] autorelease];
+    tabBarShowHideAnimationUtil* util = DNPP_AUTORELEASE([[tabBarShowHideAnimationUtil alloc] initWithDuration:duration]);
     return util;
 }
 

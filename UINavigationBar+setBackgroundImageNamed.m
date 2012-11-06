@@ -25,7 +25,7 @@
 		UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         navBGImageView.layer.zPosition = -FLT_MAX;
         [self insertSubview:navBGImageView atIndex:0];
-        [navBGImageView release];
+        DNPP_RELEASE(navBGImageView);
     }
 }
 

@@ -13,9 +13,9 @@
 
 + (NSInteger)nowJpYearInteger
 {
-    NSLocale* jpLocale             = [[[NSLocale alloc] initWithLocaleIdentifier:jpLocaleStr] autorelease];
+    NSLocale* jpLocale             = DNPP_AUTORELEASE([[NSLocale alloc] initWithLocaleIdentifier:jpLocaleStr]);
     NSTimeZone* jpTimeZone         = [NSTimeZone timeZoneWithName:jpTimeZoneStr];
-    NSDateFormatter* dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
+    NSDateFormatter* dateFormatter = DNPP_AUTORELEASE([[NSDateFormatter alloc] init]);
     [dateFormatter setDateFormat:@"yyyy"];
     [dateFormatter setLocale:jpLocale];
     [dateFormatter setTimeZone:jpTimeZone];
@@ -32,9 +32,9 @@
 
  + (NSInteger)nowJpWeekdayInteger
 {
-    NSLocale*   jpLocale   = [[[NSLocale alloc] initWithLocaleIdentifier:jpLocaleStr] autorelease];
+    NSLocale*   jpLocale   = DNPP_AUTORELEASE([[NSLocale alloc] initWithLocaleIdentifier:jpLocaleStr]);
     NSTimeZone* jpTimeZone = [NSTimeZone timeZoneWithName:jpTimeZoneStr];
-    NSCalendar* calendar   = [[[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar] autorelease];
+    NSCalendar* calendar   = DNPP_AUTORELEASE([[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar]);
     [calendar setLocale:jpLocale];
     [calendar setTimeZone:jpTimeZone];
     
@@ -57,9 +57,9 @@
 
 + (NSString*)easyDateFormatterForJp:(NSString*)dateFormat date:(NSDate*)date
 {
-    NSLocale* jpLocale             = [[[NSLocale alloc] initWithLocaleIdentifier:jpLocaleStr] autorelease];
+    NSLocale* jpLocale             = DNPP_AUTORELEASE([[NSLocale alloc] initWithLocaleIdentifier:jpLocaleStr]);
     NSTimeZone* jpTimeZone         = [NSTimeZone timeZoneWithName:jpTimeZoneStr];
-    NSDateFormatter* dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
+    NSDateFormatter* dateFormatter = DNPP_AUTORELEASE([[NSDateFormatter alloc] init]);
     [dateFormatter setDateFormat:dateFormat];
     [dateFormatter setLocale:jpLocale];
     [dateFormatter setTimeZone:jpTimeZone];
@@ -77,9 +77,9 @@
     if (!dateFormat && !dateString)
         return nil;
     
-    NSLocale* jpLocale             = [[[NSLocale alloc] initWithLocaleIdentifier:jpLocaleStr] autorelease];
+    NSLocale* jpLocale             = DNPP_AUTORELEASE([[NSLocale alloc] initWithLocaleIdentifier:jpLocaleStr]);
     NSTimeZone* jpTimeZone         = [NSTimeZone timeZoneWithName:jpTimeZoneStr];
-    NSDateFormatter* dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
+    NSDateFormatter* dateFormatter = DNPP_AUTORELEASE([[NSDateFormatter alloc] init]);
     [dateFormatter setDateFormat:dateFormat];
     [dateFormatter setLocale:jpLocale];
     [dateFormatter setTimeZone:jpTimeZone];

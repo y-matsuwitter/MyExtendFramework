@@ -28,7 +28,7 @@
                                                                                              NULL,
                                                                                              (CFStringRef)@"!*'\"();:@&=+$,/?%#[]% ",
                                                                                              CFStringConvertNSStringEncodingToEncoding(encoding));
-                [finallyEscape autorelease];
+                DNPP_AUTORELEASE(finallyEscape);
                 [params appendFormat:@"%@=%@&", key, finallyEscape];
             }
         }

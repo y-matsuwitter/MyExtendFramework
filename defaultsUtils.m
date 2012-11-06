@@ -10,7 +10,7 @@
 
 + (defaultsUtils*)use
 {
-    return [[[defaultsUtils alloc] init] autorelease];
+    return DNPP_AUTORELEASE([[defaultsUtils alloc] init]);
 }
 
 - (id)get:(NSString*)aKey
