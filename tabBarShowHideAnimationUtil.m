@@ -5,7 +5,7 @@
 //
 
 #import "tabBarShowHideAnimationUtil.h"
-#import "MyMacros.h"
+
 @implementation tabBarShowHideAnimationUtil
 
 @synthesize duration = _duration;

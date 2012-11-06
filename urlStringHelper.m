@@ -7,7 +7,6 @@
 //
 
 #import "urlStringHelper.h"
-#import "MyMacros.h"
 
 @implementation urlStringHelper
 
@@ -24,11 +23,19 @@
             if (![value isEmpty]) {
                 // UTF-8 な感じで。EUC-JP なら NSJapaneseEUCStringEncoding で  SJIS なら NSShiftJISStringEncoding
                 NSString* escapedString = [value stringByAddingPercentEscapesUsingEncoding:encoding];
+#ifdef DNPP_ARC_ENABLED
+                NSString* finallyEscape = (__bridge NSString*)CFURLCreateStringByAddingPercentEscapes(NULL,
+                                                                                             (CFStringRef)escapedString,
+                                                                                             NULL,
+                                                                                             (CFStringRef)@"!*'\"();:@&=+$,/?%#[]% ",
+                                                                                             CFStringConvertNSStringEncodingToEncoding(encoding));
+#else
                 NSString* finallyEscape = (NSString*)CFURLCreateStringByAddingPercentEscapes(NULL,
                                                                                              (CFStringRef)escapedString,
                                                                                              NULL,
                                                                                              (CFStringRef)@"!*'\"();:@&=+$,/?%#[]% ",
                                                                                              CFStringConvertNSStringEncodingToEncoding(encoding));
+#endif
                 DNPP_AUTORELEASE(finallyEscape);
                 [params appendFormat:@"%@=%@&", key, finallyEscape];
             }

@@ -24,11 +24,13 @@
     #define DNPP_RELEASE(xx)  xx = nil
     #define DNPP_AUTORELEASE(xx)  (xx)
     #define DNPP_RETAINCOUNT(xx)  (xx)
+    #define DNPP_DEALLOC(xx)  (xx)
 #else
     #define DNPP_RETAIN(xx)           [xx retain]
     #define DNPP_RELEASE(xx)          [xx release], xx = nil
     #define DNPP_AUTORELEASE(xx)      [xx autorelease]
     #define DNPP_RETAINCOUNT(xx)      [xx retainCount]
+    #define DNPP_DEALLOC(xx)          [xx dealloc]
 #endif
 
 

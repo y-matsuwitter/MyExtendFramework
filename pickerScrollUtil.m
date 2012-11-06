@@ -30,7 +30,7 @@
     Destroy(_pickerView);
     Destroy(_scrollView);
     _sendCallbackTarget = nil;
-    [super dealloc];
+    DNPP_DEALLOC(super);
 }
 
 - (id)initWithPickerView:(UIPickerView *)pickerView andScrollView:(UIScrollView *)scrollView
