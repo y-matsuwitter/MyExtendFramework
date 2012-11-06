@@ -26,6 +26,7 @@
 @synthesize callbackSelector   = _callbackSelector;
 
 #ifdef DNPP_ARC_ENABLED
+#else
 - (void)dealloc
 {
     Destroy(_pickerView);
