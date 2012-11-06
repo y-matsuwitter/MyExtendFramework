@@ -25,13 +25,15 @@
 @synthesize sendCallbackTarget = _sendCallbackTarget;
 @synthesize callbackSelector   = _callbackSelector;
 
+#ifdef DNPP_ARC_ENABLED
 - (void)dealloc
 {
     Destroy(_pickerView);
     Destroy(_scrollView);
     _sendCallbackTarget = nil;
-    DNPP_DEALLOC(super);
+    [super dealloc];
 }
+#endif
 
 - (id)initWithPickerView:(UIPickerView *)pickerView andScrollView:(UIScrollView *)scrollView
 {
