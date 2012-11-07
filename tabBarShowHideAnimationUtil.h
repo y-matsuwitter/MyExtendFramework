@@ -10,20 +10,17 @@ typedef void (^tabBarShowHideAnimationCompletionBlock)(void);
 
 @interface tabBarShowHideAnimationUtil : NSObject
 
-@property (nonatomic, readwrite) NSTimeInterval duration;
+@property (nonatomic, assign)    UITabBarController* tabBarController;
+@property (nonatomic, assign)    UIView*             view;
+@property (nonatomic, readwrite) NSTimeInterval      duration;
+@property (nonatomic, readonly)  BOOL                isTabBarHidden;
 
-+ (tabBarShowHideAnimationUtil*)useWithDuration:(NSTimeInterval)duration;
++ (tabBarShowHideAnimationUtil*)useWithTabBarController:(UITabBarController*)tabBarController
+                                                   view:(UIView*)view
+                                               duration:(NSTimeInterval)duration;
 
-- (void)toggleTabBarUsingAnimationWithView:(UIView*)view
-                          tabBarController:(UITabBarController*)tabBarController
-                                completion:(tabBarShowHideAnimationCompletionBlock)completion;
-
-- (void)showTabBarUsingAnimationWithView:(UIView*)view
-                        tabBarController:(UITabBarController*)tabBarController
-                              completion:(tabBarShowHideAnimationCompletionBlock)completion;
-
-- (void)hideTabBarUsingAnimationWithView:(UIView*)view
-                        tabBarController:(UITabBarController*)tabBarController
-                              completion:(tabBarShowHideAnimationCompletionBlock)completion;
+- (void)toggleTabBarUsingAnimationWithCompletion:(tabBarShowHideAnimationCompletionBlock)completion;
+- (void)showTabBarUsingAnimationWithCompletion:(tabBarShowHideAnimationCompletionBlock)completion;
+- (void)hideTabBarUsingAnimationWithCompletion:(tabBarShowHideAnimationCompletionBlock)completion;
 
 @end
